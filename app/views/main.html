@@ -1,0 +1,32 @@
+<div ng-controller="MainCtrl as ctrl">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="input-group">
+       <input type="text" class="form-control" id="url" ng-model="url" placeholder="Enter WebSocket URL...">
+       <span class="input-group-btn">
+         <button class="btn btn-default" type="button" ng-click="ctrl.connect(url)">Connect</button>
+       </span>
+     </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="log-console well well-sm" data-display-log>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+       <input type="text" class="form-control" placeholder="Send on WebSocket...">
+       <span class="input-group-btn">
+         <button class="btn btn-default" type="button">Send</button>
+       </span>
+     </div>
+    </div>
+  </div>
+</div>
