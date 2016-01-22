@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // grunt.loadNpmTasks('grunt-gh-pages');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -220,7 +222,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -423,6 +425,13 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    gh-pages: {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
     }
   });
 

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @ngdoc directive
  * @name websocketTesterApp:displayLog
@@ -8,7 +10,6 @@
  */
 angular.module('websocketTesterApp')
   .directive('displayLog', function() {
-    'use strict';
 
     return {
       restrict: 'EA',
