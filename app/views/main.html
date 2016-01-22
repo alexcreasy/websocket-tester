@@ -22,9 +22,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="input-group">
-       <input type="text" class="form-control" placeholder="Send on WebSocket...">
+       <input type="text" class="form-control" ng-model="message" placeholder="Send on WebSocket...">
        <span class="input-group-btn">
-         <button class="btn btn-default" type="button">Send</button>
+         <button class="btn btn-default" ng-click="ctrl.send(message)" type="button">Send</button>
        </span>
      </div>
     </div>

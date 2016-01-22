@@ -20,7 +20,12 @@ angular.module('websocketTesterApp')
     }
 
     self.connect = function(url) {
-      socket = $websocket(url);
+      try {
+        socket = $websocket(url);
+      } catch (e) {
+        pushDialogue('*** Error: ' + e.message);
+        return;
+      }
 
       socket.onOpen(function() {
         pushDialogue('*** Connected to: ' + url);
@@ -31,7 +36,7 @@ angular.module('websocketTesterApp')
       });
 
       socket.onError(function() {
-        $log.error('WebSocket Error: %O', arguments);
+        pushDialogue('*** Error: Check browser console for more information');
       });
 
       socket.onMessage(function(message) {

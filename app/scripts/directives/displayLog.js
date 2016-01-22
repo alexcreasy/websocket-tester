@@ -18,10 +18,7 @@ angular.module('websocketTesterApp')
         function addToLog(event, payload) {
           element.append(payload + '<br>');
         }
-        // for (var i = 0; i < 50; i++) {
-        //   addToLog({}, '->Testing Testing Testing Testing Testing Testing ');
-        //   addToLog({}, '->Loud and clear Loud and clear Loud and clear');
-        // }
+
         scope.$on('ADD_LOG_LINE', addToLog);
       }
     };

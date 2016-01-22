@@ -20,7 +20,7 @@ angular
     'ngTouch',
     'angular-websocket'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $provide) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -30,4 +30,14 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+      $provide.decorator('$exceptionHandler', function($delegate, $injector){
+          return function(exception, cause){
+              var $rootScope = $injector.get('$rootScope');
+              console.log('toplevel exception: %O, %O', exception, cause);
+              $rootScope.$broadcast('ADD_LOG_LINE', '*** Error: ' + exception + ' : ' + cause);
+              $delegate(exception, cause);
+          };
+      });
+
   });
