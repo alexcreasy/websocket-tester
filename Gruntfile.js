@@ -427,7 +427,7 @@ module.exports = function (grunt) {
       }
     },
 
-    gh-pages: {
+    'gh-pages': {
       options: {
         base: 'dist'
       },
@@ -488,5 +488,10 @@ module.exports = function (grunt) {
     'newer:jscs',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('publish', [
+    'default',
+    'gh-pages'
   ]);
 };
