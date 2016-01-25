@@ -8,7 +8,7 @@
  * Controller of the websocketTesterApp
  */
 angular.module('websocketTesterApp')
-  .controller('MainCtrl', function ($window, $rootScope, $log, $websocket) {
+  .controller('MainCtrl', function ($window, $scope, $log, $websocket) {
 
     var self,
         socket;
@@ -16,7 +16,7 @@ angular.module('websocketTesterApp')
     self = this;
 
     function pushDialogue(message) {
-      $rootScope.$broadcast('ADD_LOG_LINE', message);
+      $scope.$broadcast('ADD_LOG_LINE', message);
     }
 
     self.connect = function(url) {
