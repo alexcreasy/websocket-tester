@@ -5,7 +5,7 @@
       <div class="input-group">
        <input type="text" class="form-control" id="url" ng-model="url" placeholder="Enter WebSocket URL...">
        <span class="input-group-btn">
-         <button class="btn btn-default" type="button" ng-click="ctrl.connect(url)">Connect</button>
+         <button class="btn btn-default" type="button" ng-click="ctrl.toggleConnect(url)">{{ ctrl.isConnected() ? 'Disconnect' : 'Connect' }}</button>
        </span>
      </div>
 

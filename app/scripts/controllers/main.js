@@ -11,9 +11,11 @@ angular.module('websocketTesterApp')
   .controller('MainCtrl', function ($window, $scope, $log, $websocket) {
 
     var self,
-        socket;
+        socket,
+        connected;
 
     self = this;
+    connected = false;
 
     function pushDialogue(message) {
       $scope.$broadcast('ADD_LOG_LINE', message);
@@ -28,11 +30,15 @@ angular.module('websocketTesterApp')
       }
 
       socket.onOpen(function() {
+        connected = true;
         pushDialogue('*** Connected to: ' + url);
+        $scope.$apply();
       });
 
       socket.onClose(function() {
+        connected = false;
         pushDialogue('*** Disconnected from: ' + url);
+        $scope.$apply();
       });
 
       socket.onError(function() {
@@ -46,7 +52,19 @@ angular.module('websocketTesterApp')
     };
 
     self.disconnect = function() {
-      socket.close();
+      socket.close(true);
+    };
+
+    self.isConnected = function() {
+      return connected;
+    };
+
+    self.toggleConnect = function(url) {
+      if (!connected) {
+        self.connect(url);
+      } else {
+        self.disconnect();
+      }
     };
 
     self.send = function(message) {
